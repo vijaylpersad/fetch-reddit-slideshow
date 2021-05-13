@@ -25,7 +25,7 @@ STOP_BUTTON.style.display = 'none'
 /* ~~~~ FUNCTIONS ~~~~ */
 
 // fetches images from the reddit API
-async function fetchReddit(e) {
+function fetchReddit(e) {
   e.preventDefault()
   // return early if there is no search query
   if(SEARCH_INPUT.value === '') return SEARCH_INPUT.placeholder = 'type something in! ⌨️'
@@ -36,7 +36,7 @@ async function fetchReddit(e) {
     // reset to init state -- just in case
     resetState()
     // load up the images array
-    images = redditJson.data.children.map((child) => {
+    images = redditJson.data.children.map(child => {
       return {
         url: child.data.url,
         ups: child.data.ups,
@@ -44,7 +44,7 @@ async function fetchReddit(e) {
         author: child.data.author
       }
     })
-    .filter((image) => {
+    .filter(image => {
       // only allow .jpg file extension
       const fileExtension = image.url.slice(-4)
       if(fileExtension === '.jpg') return true
@@ -96,7 +96,7 @@ function changeSlide(){
   // put all elements in a array to iterate over
   const slideshowEls = [author, subReddit, ups, imageSlide]
   console.log(slideshowEls, '🔥')
-  slideshowEls.forEach((el) => {
+  slideshowEls.forEach(el => {
     SLIDESHOW_CONTAINER.appendChild(el)
   })
 }
