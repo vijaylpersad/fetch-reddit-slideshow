@@ -46,8 +46,8 @@ async function fetchReddit(e) {
     })
     .filter((image) => {
       // only allow .jpg file extension
-      const fileEstension = image.url.slice(-4)
-      if(fileEstension === '.jpg') return true
+      const fileExtension = image.url.slice(-4)
+      if(fileExtension === '.jpg') return true
       return false
     })
     // start slideshow
