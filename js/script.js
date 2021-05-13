@@ -27,18 +27,16 @@ STOP_BUTTON.style.display = 'none'
 // fetches images from the reddit API
 async function fetchReddit(e) {
   e.preventDefault()
-  if(SEARCH_INPUT.value === '') {
-    SEARCH_INPUT.placeholder = 'type something in! ⌨️'
-    return
-  }
-  try {
-    // fetch from reddit
-    const redditData = await fetch(`http://www.reddit.com/r/gonewild/search.json?q=${SEARCH_INPUT.value}+nsfw:no`)  
-    const redditJson = await redditData.json()
-    // reset to init state
+  // return early if there is no search query
+  if(SEARCH_INPUT.value === '') return SEARCH_INPUT.placeholder = 'type something in! ⌨️'
+  // fetch from reddit
+  fetch(`http://www.reddit.com/r/gonewild/search.json?q=${SEARCH_INPUT.value}+nsfw:no`)
+  .then(response => response.json())
+  .then(redditJson => {
+    // reset to init state -- just in case
     resetState()
     // load up the images array
-    images = redditJson.data.children.map(function(child) {
+    images = redditJson.data.children.map((child) => {
       return {
         url: child.data.url,
         ups: child.data.ups,
@@ -46,7 +44,7 @@ async function fetchReddit(e) {
         author: child.data.author
       }
     })
-    .filter(function(image){
+    .filter((image) => {
       const fileEstension = image.url.slice(-4)
       if(fileEstension === '.jpg') return true
       return false
@@ -54,9 +52,8 @@ async function fetchReddit(e) {
     // start slideshow
     startSlideshow()
     changeSlide()
-  } catch(err) {
-    console.log(err)
-  }
+  }) 
+  .catch(err => console.log(er)) 
 }
 
 // begins slideshow
