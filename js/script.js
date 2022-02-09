@@ -57,6 +57,42 @@ function fetchReddit(e) {
   .catch(err => console.log(er)) 
 }
 
+
+// fetching reddit using async/await to handle promises
+// async function fetchReddit(e) {
+//   e.preventDefault()
+//   if(SEARCH_INPUT.value === '') {
+//     SEARCH_INPUT.placeholder = 'type something in! ⌨️'
+//     return
+//   }
+//   try {
+//     // fetch from reddit
+//     const redditData = await fetch(`http://www.reddit.com/r/gonewild/search.json?q=${SEARCH_INPUT.value}+nsfw:no`)  
+//     const redditJson = await redditData.json()
+//     // reset to init state
+//     resetState()
+//     // load up the images array
+//     images = redditJson.data.children.map(function(child) {
+//       return {
+//         url: child.data.url,
+//         ups: child.data.ups,
+//         subreddit: child.data.subreddit,
+//         author: child.data.author
+//       }
+//     })
+//     .filter(function(image){
+//       const fileEstension = image.url.slice(-4)
+//       if(fileEstension === '.jpg') return true
+//       return false
+//     })
+//     // start slideshow
+//     startSlideshow()
+//     changeSlide()
+//   } catch(err) {
+//     console.log(err)
+//   }
+// }
+
 // begins slideshow
 function startSlideshow(){
   slideshowInterval = setInterval(changeSlide, TIMER_SPEED)
