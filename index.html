@@ -3,9 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello Front-End</title>
+  <link rel="stylesheet" href="style.css"></link>
+  <title>Reddit Slideshow</title>
 </head>
 <body>
-  <h1>Hello Front-End</h1>
+  <h1>Reddit Slideshow</h1>
+
+  <p>Type your query below and click "search" to reveal a slideshow of related SFW images live from Reddit.</p>
+
+  <form>
+    <input type="text" name="redditSearch" id="redditSearch">
+    <button type="submit">Search</button>
+  </form>
+
+  <div id='slideshow'>
+    <img name="slide" id="slide">
+  </div>
+
+
+
+  <button type="reset" id="reset">Reset Search</button>
+  <script defer src="script.js"></script>
 </body>
 </html>
