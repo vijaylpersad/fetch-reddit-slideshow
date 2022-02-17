@@ -11,27 +11,26 @@ const fetchReddit = (search) => { //can see data for example link if we take out
         // these DOM instructions access the photo attached to each post
         //displayImage(jsonData.data.children[0].data.gallery_data.items) //get this checked out
         // displayImage()
-
-        function changeImg = () => {
-            for (let i=0; i<jsonData.data.children.length; i++){
+        addPhotos(jsonData)
         
-                //let slideshow = document.createElement('img')
-                const img_source = jsonData.data.children[i].data.thumbnail
+            // for (let i=0; i<jsonData.data.children.length; i++){
+        
+            //     let slideshow = document.createElement('img')
+            //     const img_source = jsonData.data.children[i].data.thumbnail
                 
-                //slideshow.src = img_source /// source should be changing every 2 seconds 
-                
-                
-                //document.querySelector('#slideshow').appendChild(slideshow) 
-                console.log(img_source)
-            }
-            let slideshow = document.createElement('img')
-            slideshow.src = img_source
+            //     slideshow.src = img_source /// source should be changing every 2 seconds 
+                        
+            //     document.querySelector('#slideshow').appendChild(slideshow) 
+            //     console.log(img_source)
+            // }
+            // let slideshow = document.createElement('img')
+            // slideshow.src = img_source
 
-            document.querySelector('#slideshow').appendChild(slideshow) 
+            // document.querySelector('#slideshow').appendChild(slideshow) 
             
         // console.log(img_source)
             
-        }
+    
     })
     .catch(err=>{
         console.log('error fetching data')
@@ -39,6 +38,29 @@ const fetchReddit = (search) => { //can see data for example link if we take out
 
 } 
 
+
+const addPhotos = (apiResults) => {
+    for (let i=0; i<apiResults.data.children.length; i++){
+        //let photosArray = []
+        //photosArray = apiResults.data.children[i].data.thumbnail
+
+
+        let img_source = apiResults.data.children[i].data.thumbnail
+        let slideshow = document.createElement('img')
+        slideshow.src = img_source /// source should be changing every 2 seconds 
+        
+        document.querySelector('#slideshow').appendChild(slideshow) 
+
+        //slideshow logic:
+    //let photos_array = 
+
+
+
+        
+    }
+
+
+}
 
 
 
